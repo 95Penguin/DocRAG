@@ -13,5 +13,6 @@ COPY ai-service/app ./app
 RUN uv sync --frozen --no-dev --extra embeddings --no-editable
 COPY frontend/dist /app/frontend/dist
 COPY data/indexes /app/data/indexes
+COPY data/eval/uploaded-knowledge.v1.jsonl /app/data/eval/uploaded-knowledge.v1.jsonl
 EXPOSE 8001
 CMD ["uv", "run", "--no-sync", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001"]
